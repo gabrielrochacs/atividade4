@@ -26,4 +26,16 @@ app.get('/readiness', (req, res) => {
         })
 });
 
+app.get('/consulta-dados', (req, res) => {
+    return res
+        .status(500)
+        .json({
+            message: "Meu APP está Vivo!",
+            plataform: os.platform(),
+            freemem: os.freemem(),
+            homedir: os.homedir(),
+            date: new Date().getTime(),
+        })
+});
+
 module.exports = app;
