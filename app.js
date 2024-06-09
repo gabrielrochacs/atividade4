@@ -38,4 +38,15 @@ app.get('/consulta-dados', (req, res) => {
         })
 });
 
+app.get('/consulta-dados', (req, res) => {
+    connection.query('SELECT * FROM cadastro_pessoas', (error, results) => {
+        if (error) {
+            console.error('Erro ao consultar dados:', error);
+            res.status(500).send('Erro ao consultar dados do banco de dados.');
+        } else {
+            res.json(results);
+        }
+    });
+});
+
 module.exports = app;
